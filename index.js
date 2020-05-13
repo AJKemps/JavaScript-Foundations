@@ -48,23 +48,23 @@ When your math is correct, monthlyRate will equal 1073.64
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
 
-function mortgageCalculator() {
+// function mortgageCalculator() {
 
-    const principal = 200000;
-    const interestRate = 0.05;
-    const years = 30;
-    const name = "Alex Kemper";
+//     const principal = 200000;
+//     const interestRate = 0.05;
+//     const years = 30;
+//     const name = "Alex Kemper";
 
-    const monthlyInterestRate = (interestRate / 12);
-    const periods = years * 12;
+//     const monthlyInterestRate = (interestRate / 12);
+//     const periods = years * 12;
 
-    const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
-    const monthlyRate = mr.toFixed(2);
+//     const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
+//     const monthlyRate = mr.toFixed(2);
 
-    return name + ", your monthly rate is " + monthlyRate;
-}
+//     return name + ", your monthly rate is " + monthlyRate;
+// }
 
-console.log(mortgageCalculator());
+// console.log(mortgageCalculator());
 
 
 // 🏡 Task 4: Arguments and Parameters
@@ -74,23 +74,23 @@ For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
 
-function mortgageCalculator(principalVal, interestRateVal, yearsVal) {
+// function mortgageCalculator(principalVal, interestRateVal, yearsVal) {
 
-    const principal = principalVal;
-    const interestRate = interestRateVal;
-    const years = yearsVal;
-    const name = "Alex Kemper";
+//     const principal = principalVal;
+//     const interestRate = interestRateVal;
+//     const years = yearsVal;
+//     const name = "Alex Kemper";
 
-    const monthlyInterestRate = (interestRate / 12);
-    const periods = years * 12;
+//     const monthlyInterestRate = (interestRate / 12);
+//     const periods = years * 12;
 
-    const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
-    const monthlyRate = mr.toFixed(2);
+//     const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
+//     const monthlyRate = mr.toFixed(2);
 
-    return name + ", your monthly rate is " + monthlyRate;
-}
+//     return name + ", your monthly rate is " + monthlyRate;
+// }
 
-console.log(mortgageCalculator(200000, 0.05, 30));
+// console.log(mortgageCalculator(200000, 0.05, 30));
 
 
 
@@ -103,35 +103,67 @@ Then, add control flow within your function such that IF creditScore is above 74
 */
 
 
-function cs(creditScore) {
-if (creditScore > 740) {
-    return interestRateVal + 0.005;
-}   else if (creditScore < 660) {
-    return interestRateVal - 0.005;
-}   else {
-    return interestRateVal;
-}
-}
+// function cs(creditScore) {
+// if (creditScore > 740) {
+//     return interestRateVal + 0.005;
+// }   else if (creditScore < 660) {
+//     return interestRateVal - 0.005;
+// }   else {
+//     return interestRateVal;
+// }
+// }
 
-console.log(cs(650).toFixed(3));
+// console.log(cs(650).toFixed(3));
 
-function mortgageCalculator(principalVal, interestRateVal, yearsVal) {
 
+
+// function mortgageCalculator(principalVal, interestRateVal, yearsVal, creditScore) {
+    
+//     const principal = principalVal;
+//     const interestRate = interestRateVal;
+//     const years = yearsVal;
+//     const name = "Alex Kemper";
+
+//     const monthlyInterestRate = (interestRate / 12);
+//     const periods = years * 12;
+
+//     const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
+//     const monthlyRate = mr.toFixed(2);
+
+//     return name + ", your monthly rate is " + monthlyRate;
+// }
+
+// console.log(mortgageCalculator(200000, 0.05, 30, 660));
+
+
+function mortgageCalculator(principalVal, interestRateVal, yearsVal, creditScore) {
+    
     const principal = principalVal;
     const interestRate = interestRateVal;
     const years = yearsVal;
     const name = "Alex Kemper";
 
     const monthlyInterestRate = (interestRate / 12);
+    const monthlyInterestRatePenalty = (0.005 / 12);
     const periods = years * 12;
 
-    const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
-    const monthlyRate = mr.toFixed(2);
-
-    return name + ", your monthly rate is " + monthlyRate;
+    if (creditScore > 740) {
+        const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate - monthlyInterestRatePenalty, periods)) / (Math.pow(1 + monthlyInterestRate - monthlyInterestRatePenalty, periods) - 1));
+        const monthlyRate = mr.toFixed(2);
+        return name + ", your monthly rate is " + monthlyRate;
+    } else if (creditScore < 660) {
+        const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate + monthlyInterestRatePenalty, periods)) / (Math.pow(1 + monthlyInterestRate + monthlyInterestRatePenalty, periods) - 1));
+        const monthlyRate = mr.toFixed(2);
+        return name + ", your monthly rate is " + monthlyRate;
+    } else {
+        const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
+        const monthlyRate = mr.toFixed(2);
+        return name + ", your monthly rate is " + monthlyRate;
+    }
 }
 
-console.log(mortgageCalculator(200000, 0.05, 30));
+console.log(mortgageCalculator(200000, 0.05, 30, 600));
+
 
 
 
@@ -151,6 +183,27 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 "{Name}, with an interest rate of 0.06, your monthly rate is $1199"
 */
 
+function variableInterestRate(principalVal, interestRateVal, yearsVal) {
+
+    for (let i = 0; i < 10; i++) {
+        
+        const principal = principalVal;
+        const interestRate = interestRateVal;
+        const years = yearsVal;
+        const name = "Alex Kemper";
+    
+        const monthlyInterestRate = (interestRate / 12);
+        const periods = years * 12;
+    
+        const mr = principal * ((monthlyInterestRate * Math.pow(1 + monthlyInterestRate, periods)) / (Math.pow(1 + monthlyInterestRate, periods) - 1));
+        const monthlyRate = mr.toFixed(2);
+    
+        return name + ", your monthly rate is " + monthlyRate;
+
+    }
+}
+
+console.log(variableInterestRate(200000, 0.04, 30));
 
 
 
